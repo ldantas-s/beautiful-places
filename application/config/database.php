@@ -75,9 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'mariadb',
-	'username' => 'ci_ldantas',
-	'password' => 'ci_ldantas', /* 'u4c1lJ50ST' */
+	'dbport' => '3306',
+	'hostname' => 'db',
+	'username' => 'root',
+	'password' => 'root', 
 	'database' => 'beautiful_places',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -4,9 +4,8 @@ class Home extends CI_Controller {
 
 	public function index() {
 		
-		$this->load->model('places');
-		$places['places'] = $this->places->placesImages();
-		// $error['error'] = '';
+		$this->load->model('place');
+		$places['places'] = $this->place->getPlaces();
 
 		$this->load->view('layout/header', ['error'=>'', 'success'=>'']);
 		$this->load->view('content', $places);
@@ -15,13 +14,12 @@ class Home extends CI_Controller {
 
 	public function place($id) {
 	
-		$this->load->model('places');	 
-		$data["place"] = $this->places->placeInfo($id);
-
+		$this->load->model('place');
+		$data["place"] = $this->place->getPlace($id)[0];
+		
 		$this->load->view('layout/header', ['error'=>'', 'success'=>'']);
 		$this->load->view('place', $data);
 		$this->load->view('layout/footer');
-
 	}
 
 	

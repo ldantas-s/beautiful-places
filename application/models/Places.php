@@ -1,5 +1,8 @@
-<?php
-  defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+// simple example model
+
 
   class Places extends CI_Model {
 

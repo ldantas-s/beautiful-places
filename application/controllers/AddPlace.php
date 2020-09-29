@@ -23,15 +23,19 @@ class AddPlace extends CI_Controller {
       return;
     }
 
+    $this->load->model('place');
+    $this->place->postPlace([
+      $data['place_name'],
+      $data['description'],
+      $data['url_image'],
+    ]);
+
     $this->message['error'] = '';
     $this->message['success'] = 'Added new place with success!';
     
     $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
     $this->load->view('addPlace');
     $this->load->view('layout/footer');
-  
-    // database
-    echo var_dump($data);
 
   }
 }

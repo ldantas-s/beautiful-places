@@ -1,17 +1,28 @@
-version: '2'
+version: '3'
+
 services:
-  myapp:
-    image: 'docker.io/bitnami/codeigniter:3-debian-10'
+  web:
+    container_name: beautiful_places
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '8000:8000'
+      - '8000:80'
     volumes:
-      - '.:/app'
+      - '.:/var/www/html'
     depends_on:
-      - mariadb
-  mariadb:
-    image: 'docker.io/bitnami/mariadb:10.3-debian-10'
+      - db
+    links:
+      - db
+  db:
+    container_name: bp_mysql
+    image: mysql:5.7
+    ports:
+      - 3306:3306
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - MARIADB_USER=ci_ldantas
-      - MARIADB_PASSWORD=ci_ldantas
-      - MARIADB_DATABASE=beautiful_places
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_DATABASE: beautiful_places
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./assets/sql:/docker-entrypoint-initdb.d
