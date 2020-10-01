@@ -7,9 +7,7 @@ class Home extends CI_Controller {
 		$this->load->model('place');
 		$places['places'] = $this->place->getPlaces();
 
-		$this->load->view('layout/header', ['error'=>'', 'success'=>'']);
-		$this->load->view('content', $places);
-		$this->load->view('layout/footer');
+		$this->load->view('content', $places);		
 	}
 
 	public function place($id) {
@@ -17,9 +15,7 @@ class Home extends CI_Controller {
 		$this->load->model('place');
 		$data["place"] = $this->place->getPlace($id)[0];
 		
-		$this->load->view('layout/header', ['error'=>'', 'success'=>'']);
 		$this->load->view('place', $data);
-		$this->load->view('layout/footer');
 	}
 
 	

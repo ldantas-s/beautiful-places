@@ -22,3 +22,5 @@
     <button class="btn btn-primary" type="submit">Send</button>
   </form>
 </div>
+
+<?php $this->load->view('layout/footer') ?>

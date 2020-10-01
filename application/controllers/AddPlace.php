@@ -2,13 +2,12 @@
 
 class AddPlace extends CI_Controller {
 
-  private $message = ['error'=>'', 'success'=>''];
+  private $message = ['error'=>NULL, 'success'=>NULL];
 
   public function index() {
 
-    $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
+    $this->load->view('layout/header');
     $this->load->view('addPlace');
-    $this->load->view('layout/footer');
   }
 
   public function submitNewPlace() {
@@ -19,7 +18,6 @@ class AddPlace extends CI_Controller {
 
       $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
       $this->load->view('addPlace');
-      $this->load->view('layout/footer');
       return;
     }
 
@@ -30,12 +28,11 @@ class AddPlace extends CI_Controller {
       $data['url_image'],
     ]);
 
-    $this->message['error'] = '';
+    $this->message['error'] = NULL;
     $this->message['success'] = 'Added new place with success!';
     
     $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
     $this->load->view('addPlace');
-    $this->load->view('layout/footer');
 
   }
 }

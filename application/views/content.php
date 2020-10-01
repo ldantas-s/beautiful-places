@@ -1,5 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
+<?php $this->load->view('layout/header') ?>
+
 <div class="row">
 <?php foreach($places as $name => $info) : ?> 
 
@@ -16,3 +18,6 @@
 
 <?php endforeach ?>
 </div>
+
+
+<?php $this->load->view('layout/footer') ?>

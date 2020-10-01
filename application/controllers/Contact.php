@@ -2,12 +2,11 @@
 
 class Contact extends CI_Controller {
 
-  private $message = ['error'=>'', 'success'=>''];
+  private $message = ['error'=>NULL, 'success'=>NULL];
 
   public function index() {
-    $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
+    $this->load->view('layout/header');
     $this->load->view('contact');
-    $this->load->view('layout/footer');
   }
 
   public function submitForm() {
@@ -21,16 +20,14 @@ class Contact extends CI_Controller {
       
       $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
       $this->load->view('contact');
-      $this->load->view('layout/footer');
       return;
     }
 
-    $this->message['error'] = '';
+    $this->message['error'] = NULL;
     $this->message['success'] = 'Send message with success!';
     
     $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
     $this->load->view('contact');
-    $this->load->view('layout/footer');
 
     // database
     echo var_dump($data);
