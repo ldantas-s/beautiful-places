@@ -5,31 +5,33 @@ class Contact extends CI_Controller {
   private $message = ['error'=>NULL, 'success'=>NULL];
 
   public function index() {
-    $this->load->view('layout/header');
-    $this->load->view('contact');
-  }
+    $rules = [
+      [
+        'field'=>'name',
+        'rules'=>'required',
+        'errors'=>['required'=>'Please, fill the field name']
+      ],
+      [
+        'field'=>'email',
+        'rules'=>'required',
+        'errors'=>['required'=>'Please, fill the field email']
 
-  public function submitForm() {
-    $data = $this->input->post();
-    // one way to do this
-    $email = $this->input->post('email');
-    
-    
-    if (!$email) {
-      $this->message['error'] = "Please, fill you email";
-      
-      $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
-      $this->load->view('contact');
-      return;
+      ],
+      [
+        'field'=>'message',
+        'label'=>'MESSAGE',
+        'rules'=>'required',
+        'errors'=>['required'=>'Please, fill the field %s']
+      ],
+    ];
+
+    $this->form_validation->set_rules($rules);
+
+    if($this->form_validation->run() === FALSE) {
+      $this->load->view('contact', ['success'=>NULL]);
+    } else {
+      // echo var_dump($this->input->post());
+      $this->load->view('contact', ['success'=>'Send message with success!']);
     }
-
-    $this->message['error'] = NULL;
-    $this->message['success'] = 'Send message with success!';
-    
-    $this->load->view('layout/header', ['error'=>$this->message['error'], 'success'=>$this->message['success']]);
-    $this->load->view('contact');
-
-    // database
-    echo var_dump($data);
   }
 }

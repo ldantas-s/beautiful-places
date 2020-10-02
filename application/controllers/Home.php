@@ -13,10 +13,32 @@ class Home extends CI_Controller {
 	public function place($id) {
 	
 		$this->load->model('place');
-		$data["place"] = $this->place->getPlace($id)[0];
+		$data = $this->place->getPlace($id)[0];
+
+		$rules = array(
+			array(
+				'field'=>'username',
+				'class'=>'form-control',
+				'rules'=>'required',
+				'errors'=>['required'=>'Por favor, preencha o campo username']
+			),
+			array(
+				'field'=>'comment',
+				'class'=>'form-control',
+				'rules'=>'required',
+				'errors'=>['required'=>'Por favor, preencha o campo comment']
+
+			),
+		);
 		
-		$this->load->view('place', $data);
+		$this->form_validation->set_rules($rules);
+
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('place', ['place'=>$data, 'success'=>NULL]);
+		} else {
+			$this->load->view('place', ['place'=>$data,'success'=>'Comment with success!']);
+		}
+
 	}
 
-	
 }

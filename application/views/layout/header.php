@@ -24,16 +24,6 @@
     </ul>
 
     <main class="container py-5 bg-white">
-    
-    <?php if (isset($error) == TRUE): ?>
-      <div class="alert alert-warning" role="alert">
-        <?php echo $error; ?>
-      </div>
-    <?php elseif (isset($success)): ?> 
-      <div class="alert alert-success" role="alert">
-        <?php echo $success; ?>
-      </div>
-    <?php endif ?>
 
 
 
