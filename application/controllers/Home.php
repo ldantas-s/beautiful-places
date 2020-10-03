@@ -3,16 +3,19 @@
 class Home extends CI_Controller {
 
 	public function index() {
-		
+		// import models
 		$this->load->model('place');
-		$places['places'] = $this->place->getPlaces();
 
+		$places['places'] = $this->place->getPlaces();
 		$this->load->view('content', $places);		
 	}
 
 	public function place($id) {
 	
+		// import models
 		$this->load->model('place');
+		$this->load->model('commentary');
+
 		$data = $this->place->getPlace($id)[0];
 
 		$rules = array(
@@ -23,10 +26,10 @@ class Home extends CI_Controller {
 				'errors'=>['required'=>'Por favor, preencha o campo username']
 			),
 			array(
-				'field'=>'comment',
+				'field'=>'commentary',
 				'class'=>'form-control',
 				'rules'=>'required',
-				'errors'=>['required'=>'Por favor, preencha o campo comment']
+				'errors'=>['required'=>'Por favor, preencha o campo commentary']
 
 			),
 		);
@@ -34,9 +37,24 @@ class Home extends CI_Controller {
 		$this->form_validation->set_rules($rules);
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('place', ['place'=>$data, 'success'=>NULL]);
+
+			// getting comments
+			$comments = $this->commentary->getComments($data['id']);
+			$this->load->view('place', ['place'=>$data, 'comments'=>$comments, 'success'=>NULL]);
+
 		} else {
-			$this->load->view('place', ['place'=>$data,'success'=>'Comment with success!']);
+			$db_data = [
+				'username'=>$this->input->post('username'),
+				'commentary'=>$this->input->post('commentary'),
+				'id_place'=>$data['id']
+			];
+
+			// post a new commentary
+			$this->commentary->PostCommentary($db_data);
+
+			// getting comments
+			$comments = $this->commentary->getComments($data['id']);
+			$this->load->view('place', ['place'=>$data,'comments'=>$comments, 'success'=>'Comment with success!']);
 		}
 
 	}

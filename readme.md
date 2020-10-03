@@ -8,5 +8,5 @@
 
 ## Implementations
 - [X] Comment area in each beautiful place;
-- [ ] Comment store in database;
+- [X] Comment store in database;
 - [ ] Information of the contact area to store in database;
