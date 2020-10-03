@@ -2,8 +2,6 @@
 
 class AddPlace extends CI_Controller {
 
-  private $message = ['error'=>NULL, 'success'=>NULL];
-
   public function index() {
 
     $data = $this->input->post();
@@ -24,9 +22,9 @@ class AddPlace extends CI_Controller {
     $this->form_validation->set_rules($rules);
 
     if ($this->form_validation->run() == FALSE) {
-      $this->load->view('addPlace', ['success'=>NULL]);
+      $this->load->view('addPlace', ['error'=>NULL, 'success'=>NULL]);
     } else {
-      $this->load->view('addPlace', ['success'=>'Stored with success!']);
+      $this->load->view('addPlace', ['error'=>NULL, 'success'=>'Stored with success!']);
       
       $this->load->model('place');
       $this->place->postPlace([

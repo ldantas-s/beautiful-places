@@ -2,8 +2,6 @@
 
 class Contact extends CI_Controller {
 
-  private $message = ['error'=>NULL, 'success'=>NULL];
-
   public function index() {
     $rules = [
       [
@@ -28,10 +26,27 @@ class Contact extends CI_Controller {
     $this->form_validation->set_rules($rules);
 
     if($this->form_validation->run() === FALSE) {
-      $this->load->view('contact', ['success'=>NULL]);
+      $this->load->view('contact', ['error'=>NULL, 'success'=>NULL]);
     } else {
-      // echo var_dump($this->input->post());
-      $this->load->view('contact', ['success'=>'Send message with success!']);
+      $info = $this->input->post();
+      // $this->load->library('email');
+      $this->load->library('emails');
+
+      $message = 
+        "The message was send of the Beautiful Places<hr>".
+        "<strong>Name:</strong>".$info['name']."<br>".
+        "<strong>Email:</strong>".$info['email']."<br>".
+        "<strong>Message:</strong>".$info['message']."<hr>";
+
+
+
+      if ($this->emails->sendEmail($info['email'], $message)) {
+        $this->load->view('contact', ['error'=>NULL, 'success'=>'Send message with success!']);
+      } else {
+        $this->load->view('contact', ['error'=>'One problem at the send email', 'success'=>NULL]);
+      }
+
+
     }
   }
 }

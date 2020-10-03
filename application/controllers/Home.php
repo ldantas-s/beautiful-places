@@ -40,7 +40,7 @@ class Home extends CI_Controller {
 
 			// getting comments
 			$comments = $this->commentary->getComments($data['id']);
-			$this->load->view('place', ['place'=>$data, 'comments'=>$comments, 'success'=>NULL]);
+			$this->load->view('place', ['place'=>$data, 'comments'=>$comments, 'error'=>NULL, 'success'=>NULL]);
 
 		} else {
 			$db_data = [
@@ -54,7 +54,7 @@ class Home extends CI_Controller {
 
 			// getting comments
 			$comments = $this->commentary->getComments($data['id']);
-			$this->load->view('place', ['place'=>$data,'comments'=>$comments, 'success'=>'Comment with success!']);
+			$this->load->view('place', ['place'=>$data,'comments'=>$comments, 'error'=>NULL, 'success'=>'Comment with success!']);
 		}
 
 	}
