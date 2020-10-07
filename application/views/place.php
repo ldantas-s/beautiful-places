@@ -55,7 +55,7 @@
   <ul class="list-group">
   <?php foreach($comments as $commentary): ?>
     <li class="list-group-item my-2 border">
-      <p class="text-muted"><?php echo $commentary['username']; ?></p>
+      <p class="text-muted"><?php echo $commentary['name']; ?></p>
       <?php echo $commentary['commentary']; ?>
     </li>
   <?php endforeach ?>
