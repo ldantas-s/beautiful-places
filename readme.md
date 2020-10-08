@@ -9,4 +9,7 @@
 ## Implementations
 - [X] Comment area in each beautiful place;
 - [X] Comment store in database;
-- [ ] Information of the contact area to store in database;
+- [X] Send info of the contact area for email;
+- [X] Create table user;
+- [X] Create authetication;
+- [ ] Create permission area;

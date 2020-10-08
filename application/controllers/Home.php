@@ -44,7 +44,7 @@ class Home extends CI_Controller {
 
 		} else {
 			$db_data = [
-				'username'=>$this->input->post('username'),
+				'name'=>$this->input->post('username'),
 				'commentary'=>$this->input->post('commentary'),
 				'id_place'=>$data['id']
 			];

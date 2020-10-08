@@ -21,6 +21,8 @@
       <li><a href="<?php echo site_url('about') ?>" class="nav-link">About</a></li>
       <li><a href="<?php echo site_url('contact') ?>" class="nav-link">Contact</a></li>
       <li><a href="<?php echo site_url('addPlace') ?>" class="btn btn-primary">Add place</a></li>
+      <li><a href="<?php echo site_url('signin') ?>" class="nav-link">Sign In</a></li>
+      <li><a href="<?php echo site_url('signup') ?>" class="nav-link">Sign Up</a></li>
     </ul>
 
     <main class="container py-5 bg-white">

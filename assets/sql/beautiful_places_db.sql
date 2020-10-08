@@ -10,7 +10,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `user`
 --
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45),
   `email` VARCHAR(45) NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `places` (
   `image` VARCHAR(255) NOT NULL,
 
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`id_user`) REFERENCES `user`(`id`)
+  FOREIGN KEY (`id_user`) REFERENCES `users`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 SET NAMES utf8;
 
@@ -58,7 +58,7 @@ SET NAMES utf8;
 --
 -- Dumping data for table `user`
 --
-INSERT INTO `user` (`name`, `email`, `password`) VALUES
+INSERT INTO `users` (`name`, `email`, `password`) VALUES
 ('ldantas_s', 'ldantas_s@email.com', '123456'),
 ('maryland', 'maryland@email.com', '123456');
 
