@@ -30,9 +30,15 @@
     <div class="col-12 col-md-6">
       <?php echo form_open('home/place/'.$place["id"]); ?>
       <div class="group-form my-3">
-        <?php 
+        <?php
+
         echo form_label('Username <span class="text-danger">*</span>', 'username', ['class'=>'form-check-label my-2']);
-        echo form_input(['type'=>'text', 'name'=>'username', 'class'=>'form-control']);
+        echo form_input([
+          'type'=>'text', 
+          'name'=>'username', 
+          'class'=>'form-control',
+          'value'=> isLogged() ? $_SESSION['logged_user'][0]['name']:'',
+          ]);
         ?>
       </div>
       <div class="group-form my-3">

@@ -36,9 +36,14 @@ class Signin extends CI_Controller {
         $this->load->view('signin', ['error'=>'Verifique se os dados estão corretos', 'success'=>NULL]);
         return;
       }
+      $this->session->set_userdata('logged_user', $user);
       redirect('home');
     }
 
   }
   
+  public function logout() {
+    $this->session->unset_userdata('logged_user');
+    redirect('home');
+  }
 }

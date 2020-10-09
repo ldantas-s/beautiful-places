@@ -4,6 +4,8 @@ class AddPlace extends CI_Controller {
 
   public function index() {
 
+    pagePermission();
+
     $data = $this->input->post();
 
     $rules = [
