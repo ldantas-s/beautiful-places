@@ -12,4 +12,4 @@
 - [X] Send info of the contact area for email;
 - [X] Create table user;
 - [X] Create authetication;
-- [ ] Create permission area;
+- [X] Create permission area;
