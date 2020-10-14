@@ -59,8 +59,8 @@ SET NAMES utf8;
 -- Dumping data for table `user`
 --
 INSERT INTO `users` (`name`, `email`, `password`) VALUES
-('ldantas_s', 'ldantas_s@email.com', '123456'),
-('maryland', 'maryland@email.com', '123456');
+('ldantas_s', 'ldantas_s@email.com', '202cb962ac59075b964b07152d234b70'),
+('maryland', 'maryland@email.com', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Dumping data for table `places`

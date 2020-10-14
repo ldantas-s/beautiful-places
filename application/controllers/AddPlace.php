@@ -33,6 +33,7 @@ class AddPlace extends CI_Controller {
         $data['place_name'],
         $data['description'],
         $data['url_image'],
+        $_SESSION['logged_user'][0]['id']
       ]);
     }
   }

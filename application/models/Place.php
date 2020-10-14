@@ -5,7 +5,7 @@ class Place extends CI_Model {
 
   public function postPlace($arData) {
 
-    $this->db->query("INSERT INTO places(place_name, description, image) VALUES(?,?,?)", $arData);
+    $this->db->query("INSERT INTO places(place_name, description, image, id_user) VALUES(?,?,?,?)", $arData);
 
   }
 
