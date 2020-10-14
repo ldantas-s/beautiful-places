@@ -6,7 +6,7 @@ function pagePermission() {
   $loggedUser = $sessionPermission->session->userdata('logged_user');
 
   if (!$loggedUser) {
-    $sessionPermission->session->set_flashdata('danger', 'faça sign in');
+    $sessionPermission->session->set_flashdata('danger', 'Faça sign in!');
     redirect('signin');
   }
   return $loggedUser;

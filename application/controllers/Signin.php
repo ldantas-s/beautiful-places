@@ -5,6 +5,7 @@ class Signin extends CI_Controller {
   
   public function index() {
 
+
     $rules = [
       [
         'field'=>'email',
@@ -21,7 +22,7 @@ class Signin extends CI_Controller {
     $this->form_validation->set_rules($rules);
 
     if ($this->form_validation->run() === FALSE) {
-      $this->load->view('signin', ['error'=>NULL, 'success'=>NULL]);
+      $this->load->view('signin', ['error'=>$_SESSION['danger'], 'success'=>NULL]);
     } else {
 
       $userInfo = [
@@ -37,6 +38,7 @@ class Signin extends CI_Controller {
         return;
       }
       $this->session->set_userdata('logged_user', $user);
+      // $this->session->set_flashdata('successSignin', 'Sign in com sucesso!');
       redirect('home');
     }
 

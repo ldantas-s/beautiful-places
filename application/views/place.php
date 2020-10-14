@@ -13,6 +13,7 @@
     </div>
     <div class="col-12 mt-3 mt-sm-0 ml-sm-3 col-xl-6 ml-xl-5">
       <p><?php echo $place["description"] ?></p>
+      <span class="text-muted font-italic">- <?php echo $place["user"]["name"] ?></span>
     </div>
   </div>
   <a href="<?php echo site_url('home') ?>">Back</a>

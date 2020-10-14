@@ -15,8 +15,13 @@ class Home extends CI_Controller {
 		// import models
 		$this->load->model('place');
 		$this->load->model('commentary');
+		$this->load->model('user_model');
+
 
 		$data = $this->place->getPlace($id)[0];
+		$data['user'] = $this->user_model->showUser($data['id_user'])[0];
+
+		// echo var_dump($this->user_model->showUser($data['id_user'])[0]['name']);
 
 		$rules = array(
 			array(

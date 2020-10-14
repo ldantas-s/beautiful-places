@@ -10,7 +10,6 @@ class User_model extends CI_Model {
     $user = $this->db->get_where('users', ['email'=> $email, 'password'=>md5($password)])->result_array();
 
     return $user;
-
   }
   
   public function store($data) {
@@ -20,7 +19,16 @@ class User_model extends CI_Model {
     }
   
     return $this->db->insert('users', $data);
+  }
 
+  public function showUser($id) {
+    $user = $this->db->select('name, email, updated_at')->get_where('users', ['id'=>$id])->result_array();
+
+    if (!$user) {
+      return NULL;
+    }
+
+    return $user;
   }
 
 }
