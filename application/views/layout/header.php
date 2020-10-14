@@ -28,7 +28,7 @@
           <?= $_SESSION['logged_user'][0]['name'] ? $_SESSION['logged_user'][0]['name']:'username'; ?>
         </a>
         <div class="dropdown-menu">
-          <a href="<?php echo site_url('addPlace') ?>" class="dropdown-item disabled">Profile</a>
+          <a href="<?php echo site_url('profile') ?>" class="dropdown-item">Profile</a>
           <a href="<?php echo site_url('addPlace') ?>" class="dropdown-item disabled">Owner Places</a>
           <a href="<?php echo site_url('addPlace') ?>" class="dropdown-item">Add place</a>
           <a href="<?php echo site_url('signin/logout') ?>" class="dropdown-item">Logout</a>

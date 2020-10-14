@@ -5,6 +5,7 @@ class Signin extends CI_Controller {
   
   public function index() {
 
+    $error = isset($_SESSION['danger']) ? $_SESSION['danger']:NULL;
 
     $rules = [
       [
@@ -22,7 +23,7 @@ class Signin extends CI_Controller {
     $this->form_validation->set_rules($rules);
 
     if ($this->form_validation->run() === FALSE) {
-      $this->load->view('signin', ['error'=>$_SESSION['danger'], 'success'=>NULL]);
+      $this->load->view('signin', ['error'=>$error, 'success'=>NULL]);
     } else {
 
       $userInfo = [
